@@ -4,46 +4,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portal de Solicitudes EF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <div class="bg"></div>
   <main class="layout">
-    <h1>Portal de SolicitudesReportesEF</h1>
+    <header class="hero">
+      <div>
+        <p class="tag">Supersociedades · Etapa 1</p>
+        <h1>Portal de SolicitudesReportesEF</h1>
+        <p class="subtitle">Prototipo funcional para validar captura de solicitudes mientras se habilita App Registration.</p>
+      </div>
+      <div class="hero-badge">Modo Prototipo</div>
+    </header>
 
-    <form id="solicitudForm">
-      <label>Título *</label>
-      <input id="titulo" required />
+    <section class="card">
+      <h2>Registrar solicitud</h2>
+      <form id="solicitudForm" novalidate>
+        <div class="grid">
+          <div class="field full">
+            <label for="titulo">Título <span>*</span></label>
+            <input id="titulo" name="titulo" type="text" required maxlength="120" placeholder="Ingrese título de la solicitud" />
+          </div>
 
-      <label>Corte *</label>
-      <input id="corte" type="number" min="2020" max="2100" required />
+          <div class="field">
+            <label for="corte">Corte (año) <span>*</span></label>
+            <input id="corte" name="corte" type="number" required min="2020" max="2100" placeholder="2025" />
+          </div>
 
-      <label>Descripción</label>
-      <textarea id="descripcion" maxlength="500"></textarea>
+          <div class="field">
+            <label for="puntosEntrada">Puntos_Entrada <span>*</span></label>
+            <select id="puntosEntrada" name="puntosEntrada" multiple size="4" required>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="40">40</option>
+              <option value="50">50</option>
+            </select>
+            <small>Selecciona uno o más valores (Ctrl/Cmd + clic).</small>
+          </div>
 
-      <label>Puntos_Entrada *</label>
-      <select id="puntosEntrada" required>
-        <option value="">Seleccione...</option>
-        <option>10</option><option>20</option><option>40</option><option>50</option>
-      </select>
+          <div class="field">
+            <label for="formatos">Formatos <span>*</span></label>
+            <select id="formatos" name="formatos" multiple size="5" required>
+              <option value="Carátula">Carátula</option>
+              <option value="ESF">ESF</option>
+              <option value="ERI">ERI</option>
+              <option value="ORI">ORI</option>
+              <option value="EFE">EFE</option>
+            </select>
+            <small>Selecciona uno o más valores (Ctrl/Cmd + clic).</small>
+          </div>
 
-      <label>Formatos *</label>
-      <select id="formatos" required>
-        <option value="">Seleccione...</option>
-        <option>Carátula</option><option>ESF</option><option>ERI</option><option>ORI</option><option>EFE</option>
-      </select>
+          <div class="field full">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" maxlength="500" rows="4" placeholder="Contexto adicional de la solicitud (opcional)"></textarea>
+            <small id="descCounter">0 / 500</small>
+          </div>
+        </div>
 
-      <button type="submit">Guardar</button>
-      <button type="button" id="exportBtn">Exportar JSON</button>
-      <p id="mensaje"></p>
-    </form>
+        <div class="actions">
+          <button type="submit">Guardar solicitud</button>
+          <button type="button" id="exportBtn" class="secondary">Exportar JSON</button>
+        </div>
 
-    <h2>Solicitudes</h2>
-    <table border="1" cellpadding="6">
-      <thead>
-        <tr><th>Título</th><th>Corte</th><th>Descripción</th><th>Puntos</th><th>Formato</th><th>Fecha</th></tr>
-      </thead>
-      <tbody id="tablaSolicitudes"></tbody>
-    </table>
+        <p id="mensaje" class="mensaje" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="table-head">
+        <h2>Solicitudes registradas</h2>
+        <span class="chip" id="rowCount">0 registros</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Corte</th>
+              <th>Descripción</th>
+              <th>Puntos_Entrada</th>
+              <th>Formatos (múltiple)</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody id="tablaSolicitudes"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <script src="./app.js"></script>
