@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Solicitudes EF</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="layout">
+    <h1>Portal de SolicitudesReportesEF</h1>
+
+    <form id="solicitudForm">
+      <label>Título *</label>
+      <input id="titulo" required />
+
+      <label>Corte *</label>
+      <input id="corte" type="number" min="2020" max="2100" required />
+
+      <label>Descripción</label>
+      <textarea id="descripcion" maxlength="500"></textarea>
+
+      <label>Puntos_Entrada *</label>
+      <select id="puntosEntrada" required>
+        <option value="">Seleccione...</option>
+        <option>10</option><option>20</option><option>40</option><option>50</option>
+      </select>
+
+      <label>Formatos *</label>
+      <select id="formatos" required>
+        <option value="">Seleccione...</option>
+        <option>Carátula</option><option>ESF</option><option>ERI</option><option>ORI</option><option>EFE</option>
+      </select>
+
+      <button type="submit">Guardar</button>
+      <button type="button" id="exportBtn">Exportar JSON</button>
+      <p id="mensaje"></p>
+    </form>
+
+    <h2>Solicitudes</h2>
+    <table border="1" cellpadding="6">
+      <thead>
+        <tr><th>Título</th><th>Corte</th><th>Descripción</th><th>Puntos</th><th>Formato</th><th>Fecha</th></tr>
+      </thead>
+      <tbody id="tablaSolicitudes"></tbody>
+    </table>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

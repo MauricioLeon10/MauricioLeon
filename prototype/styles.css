@@ -1,0 +1,7 @@
+body{font-family:Arial,sans-serif;margin:20px}
+.layout{max-width:900px;margin:auto}
+form{display:grid;gap:8px;margin-bottom:20px}
+input,select,textarea,button{padding:8px}
+#mensaje{font-weight:bold;color:#0a5}
+table{width:100%;border-collapse:collapse}
+th,td{padding:6px}
