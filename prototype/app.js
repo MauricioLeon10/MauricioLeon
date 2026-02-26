@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'solicitudes_reportes_ef';
+﻿const STORAGE_KEY = 'solicitudes_reportes_ef';
 const puntosPermitidos = new Set(['10', '20', '40', '50']);
 const formatosPermitidos = new Set(['Carátula', 'ESF', 'ERI', 'ORI', 'EFE']);
 
@@ -9,6 +9,17 @@ const exportBtn = document.getElementById('exportBtn');
 const rowCount = document.getElementById('rowCount');
 const descripcion = document.getElementById('descripcion');
 const descCounter = document.getElementById('descCounter');
+const corte = document.getElementById('corte');
+
+function initYears() {
+  const currentYear = new Date().getFullYear();
+  for (let year = currentYear; year >= 2020; year -= 1) {
+    const option = document.createElement('option');
+    option.value = String(year);
+    option.textContent = String(year);
+    corte.appendChild(option);
+  }
+}
 
 function getRows() {
   return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
@@ -47,7 +58,7 @@ function updateCounter() {
 function validate(payload) {
   const currentYear = new Date().getFullYear();
   if (!payload.titulo?.trim()) return 'Título es obligatorio.';
-  if (!payload.corte || payload.corte < 2020 || payload.corte > currentYear) {
+  if (!Number.isInteger(payload.corte) || payload.corte < 2020 || payload.corte > currentYear) {
     return `Corte debe estar entre 2020 y ${currentYear}.`;
   }
   if (!Array.isArray(payload.puntosEntrada) || payload.puntosEntrada.length === 0) return 'Debes seleccionar al menos un Puntos_Entrada.';
@@ -63,10 +74,10 @@ form.addEventListener('submit', (event) => {
 
   const payload = {
     titulo: form.titulo.value.trim(),
-    corte: Number(form.corte.value),
+    corte: parseInt(form.corte.value, 10),
     descripcion: form.descripcion.value.trim(),
-    puntosEntrada: Array.from(form.puntosEntrada.selectedOptions).map((opt) => opt.value),
-    formatos: Array.from(form.formatos.selectedOptions).map((opt) => opt.value),
+    puntosEntrada: [form.puntosEntrada.value],
+    formatos: [form.formatos.value],
     fechaRegistro: new Date().toISOString(),
     estado: 'Pendiente'
   };
@@ -98,5 +109,6 @@ exportBtn.addEventListener('click', () => {
   URL.revokeObjectURL(url);
 });
 
+initYears();
 updateCounter();
 renderRows();

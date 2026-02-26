@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -32,30 +32,32 @@
 
           <div class="field">
             <label for="corte">Corte (año) <span>*</span></label>
-            <input id="corte" name="corte" type="number" required min="2020" max="2100" placeholder="2025" />
+            <select id="corte" name="corte" required>
+              <option value="">Seleccione año...</option>
+            </select>
           </div>
 
           <div class="field">
             <label for="puntosEntrada">Puntos_Entrada <span>*</span></label>
-            <select id="puntosEntrada" name="puntosEntrada" multiple size="4" required>
+            <select id="puntosEntrada" name="puntosEntrada" required>
+              <option value="">Seleccione una opción...</option>
               <option value="10">10</option>
               <option value="20">20</option>
               <option value="40">40</option>
               <option value="50">50</option>
             </select>
-            <small>Selecciona uno o más valores (Ctrl/Cmd + clic).</small>
           </div>
 
           <div class="field">
             <label for="formatos">Formatos <span>*</span></label>
-            <select id="formatos" name="formatos" multiple size="5" required>
+            <select id="formatos" name="formatos" required>
+              <option value="">Seleccione una opción...</option>
               <option value="Carátula">Carátula</option>
               <option value="ESF">ESF</option>
               <option value="ERI">ERI</option>
               <option value="ORI">ORI</option>
               <option value="EFE">EFE</option>
             </select>
-            <small>Selecciona uno o más valores (Ctrl/Cmd + clic).</small>
           </div>
 
           <div class="field full">
@@ -87,7 +89,7 @@
               <th>Corte</th>
               <th>Descripción</th>
               <th>Puntos_Entrada</th>
-              <th>Formatos (múltiple)</th>
+              <th>Formatos</th>
               <th>Estado</th>
               <th>Fecha</th>
             </tr>

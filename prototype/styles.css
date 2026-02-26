@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #f3f6fb;
   --card: #ffffff;
   --text: #0f172a;
@@ -18,109 +18,39 @@ body {
   color: var(--text);
   background: var(--bg);
 }
-
 .bg {
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background: radial-gradient(circle at 10% 0%, #c7d9ff 0%, transparent 35%), radial-gradient(circle at 90% 10%, #dcfce7 0%, transparent 30%);
   pointer-events: none;
 }
-
-.layout {
-  position: relative;
-  max-width: 1100px;
-  margin: 28px auto;
-  padding: 0 16px 24px;
-}
-
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
+.layout { position: relative; max-width: 1100px; margin: 28px auto; padding: 0 16px 24px; }
+.hero { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
 .tag { margin: 0; color: var(--primary-dark); font-weight: 600; }
 h1 { margin: 6px 0; font-size: 1.9rem; }
 .subtitle { margin: 0; color: var(--muted); max-width: 760px; }
-.hero-badge {
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  color: #1e3a8a;
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.card {
-  background: var(--card);
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  padding: 18px;
-  margin-bottom: 16px;
-}
-
+.hero-badge { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; padding: 8px 12px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
+.card { background: var(--card); border: 1px solid #e2e8f0; border-radius: 14px; box-shadow: var(--shadow); padding: 18px; margin-bottom: 16px; }
 h2 { margin: 0 0 14px; font-size: 1.15rem; }
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .field { display: flex; flex-direction: column; gap: 7px; }
 .field.full { grid-column: 1 / -1; }
-
 label { font-weight: 600; font-size: .95rem; }
 label span { color: var(--danger); }
-input, select, textarea {
-  width: 100%;
-  padding: 11px 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #fff;
-  font: inherit;
-}
-input:focus, select:focus, textarea:focus {
-  outline: 2px solid #bfdbfe;
-  border-color: #93c5fd;
-}
-small { color: var(--muted); text-align: right; }
-
+input, select, textarea { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; font: inherit; }
+input:focus, select:focus, textarea:focus { outline: 2px solid #bfdbfe; border-color: #93c5fd; }
+small { color: var(--muted); }
 .actions { display: flex; gap: 10px; margin-top: 6px; }
-button {
-  border: none;
-  border-radius: 10px;
-  padding: 11px 14px;
-  font-weight: 600;
-  cursor: pointer;
-  background: var(--primary);
-  color: #fff;
-}
+button { border: none; border-radius: 10px; padding: 11px 14px; font-weight: 600; cursor: pointer; background: var(--primary); color: #fff; }
 button:hover { background: var(--primary-dark); }
 button.secondary { background: #334155; }
 button.secondary:hover { background: #1e293b; }
-
 .mensaje { min-height: 22px; margin: 8px 0 0; font-weight: 600; }
 .mensaje.ok { color: var(--success); }
 .mensaje.error { color: var(--danger); }
-
 .table-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.chip {
-  font-size: .85rem;
-  color: #1e3a8a;
-  border: 1px solid #bfdbfe;
-  background: #eff6ff;
-  border-radius: 999px;
-  padding: 4px 10px;
-}
-
+.chip { font-size: .85rem; color: #1e3a8a; border: 1px solid #bfdbfe; background: #eff6ff; border-radius: 999px; padding: 4px 10px; }
 .table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; min-width: 760px; }
 th, td { border: 1px solid #e2e8f0; padding: 9px; text-align: left; vertical-align: top; font-size: .92rem; }
 th { background: #f8fafc; }
-
-@media (max-width: 840px) {
-  .hero { flex-direction: column; }
-  .grid { grid-template-columns: 1fr; }
-}
-
-select[multiple] { min-height: 128px; }
-
+@media (max-width: 840px) { .hero { flex-direction: column; } .grid { grid-template-columns: 1fr; } }
